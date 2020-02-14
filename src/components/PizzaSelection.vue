@@ -1,28 +1,19 @@
 <template>
   <div>
-    <label for="pizzas">Choose a pizza: </label>
-    <select v-model="selectedPizzaId" id="pizzas">
-      <option value="" disabled selected>Please select</option>
-      <option v-for="pizza in pizzas" :key="pizza.id" :value="pizza.id">
-        {{ pizza.name }}
-      </option>
-    </select>
+    <PizzaDropdown v-model="selectedPizzaId" :pizzas="pizzas" />
     <h2>Check your Order</h2>
-    <div v-if="selectedPizza">
-      You selected a Pizza {{ selectedPizza.name }} with
-      <template v-for="(topping, index) in selectedPizza.toppings">
-        {{ topping
-        }}<template v-if="index !== selectedPizza.toppings.length - 1"
-          >,</template
-        >
-      </template>
-      for {{ selectedPizza.price }} €.
-    </div>
+    <PizzaDisplayInformation v-if="selectedPizza" v-bind="selectedPizza" />
   </div>
 </template>
 <script>
+import PizzaDisplayInformation from "@/components/PizzaDisplayInformation";
+import PizzaDropdown from "@/components/PizzaDropdown";
 export default {
   name: "PizzaSelection",
+  components: {
+    PizzaDisplayInformation,
+    PizzaDropdown
+  },
   data() {
     return {
       selectedPizzaId: "",
