@@ -10,8 +10,11 @@
     <h2>Check your Order</h2>
     <div v-if="selectedPizza">
       You selected a Pizza {{ selectedPizza.name }} with
-      <template v-for="topping in selectedPizza.toppings">
-        {{ topping }}
+      <template v-for="(topping, index) in selectedPizza.toppings">
+        {{ topping
+        }}<template v-if="index !== selectedPizza.toppings.length - 1"
+          >,</template
+        >
       </template>
       for {{ selectedPizza.price }} €.
     </div>
