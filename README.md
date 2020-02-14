@@ -1,4 +1,4 @@
-# ristorante-per-testare
+# Codebeispiel zum Vortrag "Testen wie im Restaurant"
 
 ## Project setup
 ```
